@@ -68,4 +68,3 @@ print(data.head())
 ## Running Tests
 There are no automated tests for this project.
 
-## Project Structure
