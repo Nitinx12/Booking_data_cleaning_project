@@ -1,92 +1,67 @@
-# **Ride Bookings Data Cleaning Project**
+# Booking Data Cleaning and Analysis
 
-## **Project Overview**
+A project focused on cleaning and preparing booking data for analysis.
 
-This project focuses on the cleaning and preprocessing of a ride bookings dataset. The primary objective is to handle missing values and inconsistencies within the data to prepare a clean, reliable dataset suitable for exploratory data analysis, visualization, and machine learning modeling. The raw dataset contained numerous missing values across both numerical and categorical columns, which were systematically addressed using appropriate imputation techniques.
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## **Dataset**
+This project takes a raw booking dataset, cleans it, and prepares it for analysis. The process involves handling missing values, correcting data types, and removing inconsistencies to create a clean and reliable dataset for data analysis and machine learning tasks. The primary goal is to transform the raw `Bookings.csv` file into a clean `cleaned_booking.csv` file.
 
-* **Source:** Bookings.csv  
-* **Dimensions:** 103,024 rows × 19 columns
+## Key Features
+* **Data Loading and Initial Exploration**: Loads the raw booking data and performs an initial assessment of its structure and quality.
+* **Handling Missing Values**: Implements strategies to handle missing data in various columns.
+* **Data Cleaning and Transformation**: Cleans and transforms data to ensure consistency and accuracy.
+* **Data Visualization**: Includes basic data visualizations to understand the data distribution and relationships between variables.
 
-### **Columns**
+## Tech Stack
+* **Language**: Python
+* **Libraries**:
+    * Pandas
+    * NumPy
+    * Seaborn
+    * Matplotlib
 
-The dataset includes the following columns:
+## Prerequisites
+* Python 3.x
+* Jupyter Notebook or JupyterLab
+* Required Python packages can be installed via pip:
+    ```bash
+    pip install pandas numpy seaborn matplotlib
+    ```
 
-* Date  
-* Time  
-* Booking\_ID  
-* Booking\_Status  
-* Customer\_ID  
-* Vehicle\_Type  
-* Pickup\_Location  
-* Drop\_Location  
-* V\_TAT (Vendor Turnaround Time)  
-* C\_TAT (Customer Turnaround Time)  
-* Canceled\_Rides\_by\_Customer  
-* Canceled\_Rides\_by\_Driver  
-* Incomplete\_Rides  
-* Incomplete\_Rides\_Reason  
-* Booking\_Value  
-* Payment\_Method  
-* Ride\_Distance  
-* Driver\_Ratings  
-* Customer\_Rating
+## Installation & Local Development
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/your-repo.git](https://github.com/your-username/your-repo.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd your-repo
+    ```
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *(Note: You'll need to create a `requirements.txt` file with the packages listed in the Tech Stack section.)*
 
-## **Data Cleaning Process**
+4.  **Run the Jupyter Notebook:**
+    ```bash
+    jupyter notebook datacleaned.ipynb
+    ```
 
-The data cleaning process involved several key steps to ensure data quality and integrity:
+## Configuration
+There are no environment variables or special configurations required for this project.
 
-1. **Initial Data Exploration:**  
-   * The dataset was loaded into a pandas DataFrame.  
-   * Initial analysis was performed using .head(), .tail(), .shape, and .info() to understand its structure, data types, and identify columns with null values.  
-2. **Missing Value Analysis:**  
-   * A comprehensive count of missing values for each column was generated using .isnull().sum().  
-   * Significant percentages of missing data were found in columns like Canceled\_Rides\_by\_Customer (89.8%), Canceled\_Rides\_by\_Driver (82.1%), Incomplete\_Rides\_Reason (96.2%), and several others with around 38% missing values.  
-   * The distribution of missing values was visualized using bar charts to clearly identify the most affected columns.  
-3. Imputation Strategy:  
-   A two-pronged approach was used to handle the missing data:  
-   * **Numerical Columns:** Missing values in numerical columns (V\_TAT, C\_TAT, Booking\_Value, Ride\_Distance, Driver\_Ratings, Customer\_Rating) were filled using the **mean** of their respective columns.  
-   * **Categorical (Object) Columns:** Missing values in categorical columns (Canceled\_Rides\_by\_Customer, Canceled\_Rides\_by\_Driver, Incomplete\_Rides, etc.) were imputed using the **mode** (most frequent value) of each column.  
-4. **Verification:**  
-   * After the imputation process, a final check was performed to confirm that all missing values had been successfully handled. The final dataset is complete with zero null values.
+## Usage/Examples
+The primary usage is to run the cells in the `datacleaned.ipynb` notebook sequentially. This will load the `Bookings.csv` dataset, perform all the cleaning and transformation steps, and save the cleaned data to `cleaned_booking.csv`.
 
-## **Results**
+Here's a snippet demonstrating how to load the data:
+```python
+import pandas as pd
 
-The outcome of this project is a thoroughly cleaned dataset, free of missing values. This prepared data is now a reliable foundation for further analysis, such as:
+# Load the raw data
+data = pd.read_csv("Bookings.csv")
 
-* Analyzing ride cancellation patterns.  
-* Evaluating driver and customer ratings.  
-* Building predictive models for booking success or ride value.
-
-## **How to Use**
-
-To replicate the data cleaning process:
-
-1. **Clone the repository:**  
-   git clone \[https://github.com/your-username/your-repository-name.git\](https://github.com/your-username/your-repository-name.git)
-
-2. **Install the required libraries:**  
-   pip install pandas numpy seaborn matplotlib jupyter
-
-3. Run the Jupyter Notebook:  
-   Open and run the datacleaned.ipynb notebook to see the step-by-step data cleaning process.
-
-## **Tools and Technologies**
-
-* **Language:** Python  
-* **Libraries:**  
-  * Pandas (for data manipulation and analysis)  
-  * NumPy (for numerical operations)  
-  * Matplotlib & Seaborn (for data visualization)  
-* **Environment:** Jupyter Notebook
-
-## **License**
-
-This project is licensed under the MIT License \- see the LICENSE file for details.
-
-## **Contact**
-
-**Nitin K**
-
-* **Email:** Nitinx321@gmail.com
+# Display the first few rows
+print(data.head())
