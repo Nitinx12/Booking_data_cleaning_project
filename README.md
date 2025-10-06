@@ -65,3 +65,7 @@ data = pd.read_csv("Bookings.csv")
 
 # Display the first few rows
 print(data.head())
+## Running Tests
+There are no automated tests for this project.
+
+## Project Structure
